@@ -1,0 +1,18 @@
+max_default_generators: 25
+generators:
+  coal_generator:
+    generator_name: <gray>Coal Generator</gray>
+    generator_block: coal_ore
+    generator_lore: <red>Generates coal</red>
+    drop_name: <blue>Coal</blue>
+    drop_item: coal
+    drop_value: 10
+    upgrade_cost: 100
+  iron_generator:
+    generator_name: <white>Iron Generator</white>
+    generator_block: iron_ore
+    generator_lore: <red>Generates iron</red>
+    drop_name: <green>Iron Ingot</green>
+    drop_item: iron_ingot
+    drop_value: 20
+    upgrade_cost: 200
