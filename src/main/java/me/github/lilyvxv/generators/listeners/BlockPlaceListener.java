@@ -53,7 +53,7 @@ public class BlockPlaceListener implements Listener {
                 player.spawnParticle(Particle.WAX_OFF, location.add(0.5, 1.2, 0.5), 3);
 
                 player.sendActionBar(Generators.prefix
-                        .append(configManager.getMessage("gens.placed", Placeholder.unparsed("placed", String.valueOf(placedGenerators + 1)), Placeholder.unparsed("max", String.valueOf(maxGenerators)))));
+                        .append(configManager.getMessage("gens.place", Placeholder.unparsed("placed", String.valueOf(placedGenerators + 1)), Placeholder.unparsed("max", String.valueOf(maxGenerators)))));
             }
         }
     }
