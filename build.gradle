@@ -20,26 +20,31 @@ repositories {
         name = 'codemc'
         url = 'https://repo.codemc.org/repository/maven-public/'
     }
+    maven {
+        name = 'jitpack'
+        url = 'https://jitpack.io'
+    }
 }
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT'
 
-    compileOnly "dev.jorel:commandapi-annotations:9.1.0"
-    annotationProcessor "dev.jorel:commandapi-annotations:9.1.0"
-    implementation "dev.jorel:commandapi-bukkit-shade:9.1.0"
+    compileOnly 'dev.jorel:commandapi-annotations:9.1.0'
+    annotationProcessor 'dev.jorel:commandapi-annotations:9.1.0'
+    implementation 'dev.jorel:commandapi-bukkit-shade:9.1.0'
 
-    implementation "de.tr7zw:item-nbt-api:2.11.3"
+    implementation 'de.tr7zw:item-nbt-api:2.11.3'
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
 }
 
 shadowJar {
     dependencies {
-        include dependency("dev.jorel:commandapi-bukkit-shade:9.1.0")
-        include dependency("de.tr7zw:item-nbt-api:2.11.3")
+        include dependency('dev.jorel:commandapi-bukkit-shade:9.1.0')
+        include dependency('de.tr7zw:item-nbt-api:2.11.3')
     }
 
-    relocate "de.tr7zw.changeme.nbtapi", "me.github.lilyvxv.nbtapi"
-    relocate "dev.jorel.commandapi", "me.github.lilyvxv.commandapi"
+    relocate 'de.tr7zw.changeme.nbtapi', 'me.github.lilyvxv.nbtapi'
+    relocate 'dev.jorel.commandapi', 'me.github.lilyvxv.commandapi'
 }
 
 build {

@@ -4,6 +4,7 @@ import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPIBukkitConfig;
 import me.github.lilyvxv.generators.commands.GiveGeneratorCommand;
 import me.github.lilyvxv.generators.commands.ReloadCommand;
+import me.github.lilyvxv.generators.commands.SellCommand;
 import me.github.lilyvxv.generators.listeners.BlockBreakListener;
 import me.github.lilyvxv.generators.listeners.BlockPlaceListener;
 import me.github.lilyvxv.generators.listeners.PlayerInteractListener;
@@ -16,8 +17,9 @@ import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
-import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
@@ -29,6 +31,7 @@ public final class Generators extends JavaPlugin {
 
     public static DataManager dataManager;
     public static ConfigManager configManager;
+    public static Economy economy;
     public static Logger LOGGER;
     public static MiniMessage miniMessage;
     public static Generators INSTANCE;
@@ -38,6 +41,12 @@ public final class Generators extends JavaPlugin {
     public void onLoad() {
         LOGGER = getLogger();
         INSTANCE = this;
+
+        if (!setupEconomy() ) {
+            LOGGER.severe("[%s] - Disabled due to no Vault dependency found!");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
 
         saveDefaultConfig();
         reloadConfig();
@@ -77,6 +86,7 @@ public final class Generators extends JavaPlugin {
     public void onEnable() {
         CommandAPI.onEnable();
         CommandAPI.registerCommand(GiveGeneratorCommand.class);
+        CommandAPI.registerCommand(SellCommand.class);
         CommandAPI.registerCommand(ReloadCommand.class);
 
         getServer().getPluginManager().registerEvents(new WorldLoadListener(), this);
@@ -93,6 +103,20 @@ public final class Generators extends JavaPlugin {
         CommandAPI.onDisable();
 
         dataManager.closeConnection();
+    }
+
+    private boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+
+        economy = rsp.getProvider();
+        return true;
     }
 }
 

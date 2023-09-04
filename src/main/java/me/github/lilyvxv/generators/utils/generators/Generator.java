@@ -1,5 +1,6 @@
 package me.github.lilyvxv.generators.utils.generators;
 
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Item;
@@ -27,13 +28,18 @@ public class Generator {
         World world = generatorLocation.getWorld();
         Location dropLocation = generatorLocation.add(0.5,1.2, 0.5);
 
-        ItemStack drop = new ItemStack(this.generatorType.dropItem, 1);
-        ItemMeta dropMeta = drop.getItemMeta();
+        NBTItem nbt = new NBTItem(new ItemStack(this.generatorType.dropItem, 1));
+        nbt.setBoolean("generator_drop", true);
+        nbt.setDouble("drop_value", this.generatorType.dropValue);
+
+        ItemStack dropItem = nbt.getItem();
+        ItemMeta dropMeta = dropItem.getItemMeta();
 
         dropMeta.displayName(miniMessage.deserialize(this.generatorType.dropName));
-        drop.setItemMeta(dropMeta);
+        // TODO: Set dropItem lore based on value and generator
+        dropItem.setItemMeta(dropMeta);
 
-        Item generatorDrop = world.dropItem(dropLocation, drop);
+        Item generatorDrop = world.dropItem(dropLocation, dropItem);
         generatorDrop.setVelocity(new Vector(0, 0, 0));
         generatorDrop.setPickupDelay(5);
     }

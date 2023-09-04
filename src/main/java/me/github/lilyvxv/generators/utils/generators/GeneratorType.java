@@ -16,7 +16,7 @@ public class GeneratorType {
     public final String generatorLore;
     public final String dropName;
     public final Material dropItem;
-    public final int dropValue;
+    public final double dropValue;
     public final int upgradeCost;
 
     public GeneratorType(String generatorType, String generatorName, String generatorBlock, String generatorLore, String dropName, String dropItem, int dropValue, int upgradeCost) {
@@ -25,7 +25,7 @@ public class GeneratorType {
         this.generatorBlock = Material.valueOf(generatorBlock.toUpperCase());
         this.generatorLore = generatorLore;
         this.dropName = dropName;
-        this.dropItem = Material.valueOf(dropItem.toUpperCase());;
+        this.dropItem = Material.valueOf(dropItem.toUpperCase());
         this.dropValue = dropValue;
         this.upgradeCost = upgradeCost;
     }
