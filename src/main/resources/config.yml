@@ -8,6 +8,8 @@ messages:
   prefix: '<main>OrbitalGN</main> <dull>></dull> '
   sell.success: "<gray>Sold all of your generator drops for <color:#72fb00><value></color>!</gray>"
   sell.no_items: '<gray>You do not have any items to sell.</gray>'
+  gens.no_slots: 'You do not have enough generator slots.'
+  gens.place: '<white>Successfully placed generator</white> <gray>(<green><placed></green>/<red><max></red>)</gray>'
 generators:
   coal_generator:
     generator_name: <gray>Coal Generator</gray>

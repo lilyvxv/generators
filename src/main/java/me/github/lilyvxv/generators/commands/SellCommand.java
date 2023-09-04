@@ -9,6 +9,7 @@ import me.github.lilyvxv.generators.utils.config.ConfigManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -49,6 +50,8 @@ public class SellCommand {
         }
 
         if (totalValue > 0.0) {
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0, 6);
+
             player.sendMessage(Generators.prefix
                     .append(configManager.getMessage("sell.success", Placeholder.component("value", Component.text(formatter.format(totalValue))))));
         } else {

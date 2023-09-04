@@ -7,6 +7,7 @@ import me.github.lilyvxv.generators.utils.config.DataManager;
 import me.github.lilyvxv.generators.utils.generators.Generator;
 import me.github.lilyvxv.generators.utils.generators.GeneratorType;
 import me.github.lilyvxv.generators.utils.misc.PermissionUtils;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -38,7 +39,7 @@ public class BlockPlaceListener implements Listener {
 
             if (placedGenerators >= maxGenerators) {
                 player.sendActionBar(Generators.prefix
-                        .append(Generators.miniMessage.deserialize("<white>You do not have enough generator slots.</white>")));
+                        .append(configManager.getMessage("gens.no_slots")));
 
                 event.setCancelled(true);
             } else {
@@ -52,8 +53,7 @@ public class BlockPlaceListener implements Listener {
                 player.spawnParticle(Particle.WAX_OFF, location.add(0.5, 1.2, 0.5), 3);
 
                 player.sendActionBar(Generators.prefix
-                        .append(Generators.miniMessage.deserialize(
-                                String.format("<white>Successfully placed generator</white> <gray>(<green>%d</green>/<red>%d</red>)</gray>", placedGenerators + 1, maxGenerators))));
+                        .append(configManager.getMessage("gens.placed", Placeholder.unparsed("placed", String.valueOf(placedGenerators + 1)), Placeholder.unparsed("max", String.valueOf(maxGenerators)))));
             }
         }
     }
