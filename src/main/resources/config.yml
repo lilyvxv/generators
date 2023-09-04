@@ -6,7 +6,8 @@ colors:
   dull: '#979DAC'
 messages:
   prefix: '<main>OrbitalGN</main> <dull>></dull> '
-
+  sell.success: "<gray>Sold all of your generator drops for <color:#72fb00><value></color>!</gray>"
+  sell.no_items: '<gray>You do not have any items to sell.</gray>'
 generators:
   coal_generator:
     generator_name: <gray>Coal Generator</gray>

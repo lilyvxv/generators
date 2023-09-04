@@ -5,8 +5,11 @@ import me.github.lilyvxv.generators.utils.generators.Generator;
 import me.github.lilyvxv.generators.utils.generators.GeneratorType;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,9 +78,9 @@ public class ConfigManager {
         return null;
     }
 
-    public Component getMessage(String key) {
+    public Component getMessage(String key, @NotNull TagResolver... tagResolvers) {
         return Generators.miniMessage
-                .deserialize(config.getString("messages." + key));
+                .deserialize(config.getString("messages." + key), tagResolvers);
     }
     public List<String> getAllGeneratorTypes() {
         List<String> generatorTypes = new ArrayList<>();

@@ -5,6 +5,10 @@ import dev.jorel.commandapi.annotations.Command;
 import dev.jorel.commandapi.annotations.Default;
 import dev.jorel.commandapi.annotations.Permission;
 import me.github.lilyvxv.generators.Generators;
+import me.github.lilyvxv.generators.utils.config.ConfigManager;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -12,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import static me.github.lilyvxv.generators.Generators.configManager;
 import static me.github.lilyvxv.generators.Generators.economy;
 
 @Command("sell")
@@ -27,7 +32,7 @@ public class SellCommand {
 
         // Loop every item inside the players inventory
         for (ItemStack item : inventory.getContents()) {
-            if (item != null) {
+            if (item != null && item.getAmount() > 0 && item.getType() != Material.AIR) {
                 NBTItem nbtItem = new NBTItem(item);
 
                 if (nbtItem.getBoolean("generator_drop")) {
@@ -45,11 +50,10 @@ public class SellCommand {
 
         if (totalValue > 0.0) {
             player.sendMessage(Generators.prefix
-                    .append(Generators.miniMessage.deserialize(
-                            String.format("<gray>Sold all of your generator drops for <color:#72fb00>%s</color>!</gray>", formatter.format(totalValue)))));
+                    .append(configManager.getMessage("sell.success", Placeholder.component("value", Component.text(formatter.format(totalValue))))));
         } else {
             player.sendMessage(Generators.prefix
-                    .append(Generators.miniMessage.deserialize("<gray>You do not have any items to sell.</gray>")));
+                    .append(configManager.getMessage("sell.no_items")));
         }
     }
 }
