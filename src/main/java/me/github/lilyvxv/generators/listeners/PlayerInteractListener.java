@@ -3,6 +3,7 @@ package me.github.lilyvxv.generators.listeners;
 import me.github.lilyvxv.generators.Generators;
 import me.github.lilyvxv.generators.utils.config.DataManager;
 import me.github.lilyvxv.generators.utils.generators.Generator;
+import me.github.lilyvxv.generators.utils.misc.PermissionUtils;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -47,6 +48,16 @@ public class PlayerInteractListener implements Listener {
                     ItemStack generatorItem = generator.generatorType.getItemStack(1);
                     player.getInventory().addItem(generatorItem);
                 }
+
+                int maxGenerators = PermissionUtils.getPlayerMaxGens(player);
+                int placedGenerators = dataManager.getAllOwnedGenerators(player);
+
+                player.sendActionBar(Generators.prefix
+                        .append(Generators.miniMessage.deserialize(
+                                String.format("<white>Successfully removed generator</white> <gray>(<green>%d</green>/<red>%d</red>)</gray>", placedGenerators, maxGenerators))));
+            } else {
+                player.sendActionBar(Generators.prefix
+                        .append(Generators.miniMessage.deserialize("<white>This is not your generator.</white>")));
             }
         }
     }

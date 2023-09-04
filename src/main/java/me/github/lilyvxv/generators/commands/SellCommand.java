@@ -5,6 +5,7 @@ import dev.jorel.commandapi.annotations.Command;
 import dev.jorel.commandapi.annotations.Default;
 import dev.jorel.commandapi.annotations.Permission;
 import me.github.lilyvxv.generators.Generators;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -44,12 +45,14 @@ public class SellCommand {
         }
 
         if (totalValue > 0.0) {
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0, 6);
+
             player.sendMessage(Generators.prefix
                     .append(Generators.miniMessage.deserialize(
-                            String.format("<gray>Sold all of your generator drops for <color:#72fb00>%s</color>!</gray>", formatter.format(totalValue)))));
+                            String.format("<white>Sold all of your generator drops for <color:#72fb00>%s</color>!</white>", formatter.format(totalValue)))));
         } else {
             player.sendMessage(Generators.prefix
-                    .append(Generators.miniMessage.deserialize("<gray>You do not have any items to sell.</gray>")));
+                    .append(Generators.miniMessage.deserialize("<white>You do not have any items to sell.</white>")));
         }
     }
 }

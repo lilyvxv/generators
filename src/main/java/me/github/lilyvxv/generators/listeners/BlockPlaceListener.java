@@ -33,7 +33,13 @@ public class BlockPlaceListener implements Listener {
         // Make sure that the placed item is a generator
         if (nbt.getBoolean("generator")) {
             // Make sure that the player has enough generator slots to place the generator
-            if (dataManager.getAllOwnedGenerators(player) >= PermissionUtils.getPlayerMaxGens(player)) {
+            int maxGenerators = PermissionUtils.getPlayerMaxGens(player);
+            int placedGenerators = dataManager.getAllOwnedGenerators(player);
+
+            if (placedGenerators >= maxGenerators) {
+                player.sendActionBar(Generators.prefix
+                        .append(Generators.miniMessage.deserialize("<white>You do not have enough generator slots.</white>")));
+
                 event.setCancelled(true);
             } else {
                 // Add the generator to the sqlite database
@@ -44,6 +50,10 @@ public class BlockPlaceListener implements Listener {
                 // Play a sound and show a particle to the player
                 player.playSound(location, Sound.ITEM_ARMOR_EQUIP_GOLD, 6, 1);
                 player.spawnParticle(Particle.WAX_OFF, location.add(0.5, 1.2, 0.5), 3);
+
+                player.sendActionBar(Generators.prefix
+                        .append(Generators.miniMessage.deserialize(
+                                String.format("<white>Successfully placed generator</white> <gray>(<green>%d</green>/<red>%d</red>)</gray>", placedGenerators + 1, maxGenerators))));
             }
         }
     }
