@@ -42,8 +42,8 @@ public final class Generators extends JavaPlugin {
         LOGGER = getLogger();
         INSTANCE = this;
 
-        if (!setupEconomy() ) {
-            LOGGER.severe("[%s] - Disabled due to no Vault dependency found!");
+        if (!setupEconomy()) {
+            LOGGER.severe("Disabled due to no Vault dependency found!");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }

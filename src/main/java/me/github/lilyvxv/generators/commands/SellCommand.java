@@ -10,13 +10,14 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.text.NumberFormat;
+import java.util.Locale;
 
 import static me.github.lilyvxv.generators.Generators.economy;
 
 @Command("sell")
 public class SellCommand {
 
-    private static final NumberFormat formatter = NumberFormat.getCurrencyInstance();
+    private static final NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
     @Default
     @Permission("generators.sell")

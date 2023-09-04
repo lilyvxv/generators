@@ -6,5 +6,4 @@ load: STARTUP
 authors: [ lily ]
 description: Featureful and performant generator handler
 website: https://github.com/lilyvxv
-depend:
-  - Vault
+depend: [ Vault, Essentials ]
