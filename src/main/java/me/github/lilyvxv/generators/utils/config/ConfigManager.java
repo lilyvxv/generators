@@ -30,6 +30,10 @@ public class ConfigManager {
     }
 
     public void load() {
+        for (String defaultKey : config.getDefaults().getKeys(true)) {
+            if (!config.contains(defaultKey, true)) config.set(defaultKey, config.get(defaultKey));
+        }
+        Generators.INSTANCE.saveConfig();
         loadConfig();
         loadGenerators();
     }
