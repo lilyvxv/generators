@@ -23,10 +23,6 @@ public class BlockPlaceListener implements Listener {
 
     private static final DataManager dataManager = Generators.dataManager;
     private static final ConfigManager configManager = Generators.configManager;
-
-    public BlockPlaceListener(Plugin plugin) {
-    }
-
     @EventHandler(priority = LOWEST)
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();

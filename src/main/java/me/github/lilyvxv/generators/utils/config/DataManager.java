@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static me.github.lilyvxv.generators.Generators.configManager;
-import static me.github.lilyvxv.generators.Generators.plugin;
+import static me.github.lilyvxv.generators.Generators.INSTANCE;
 
 public class DataManager {
 
@@ -136,7 +136,7 @@ public class DataManager {
                 UUID generatorOwner = UUID.fromString(resultSet.getString("player_uuid"));
 
                 Location location = new Location(
-                        plugin.getServer().getWorld(resultSet.getString("world")),
+                        INSTANCE.getServer().getWorld(resultSet.getString("world")),
                         resultSet.getDouble("x"),
                         resultSet.getDouble("y"),
                         resultSet.getDouble("z")

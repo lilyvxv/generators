@@ -20,9 +20,6 @@ import static org.bukkit.event.EventPriority.LOWEST;
 
 public class PlayerInteractListener implements Listener {
 
-    public PlayerInteractListener(Generators plugin) {
-    }
-
     @EventHandler(priority = LOWEST)
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction() == Action.LEFT_CLICK_BLOCK && event.getClickedBlock() != null) {

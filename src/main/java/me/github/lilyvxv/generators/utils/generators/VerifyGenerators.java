@@ -6,7 +6,7 @@ import org.bukkit.block.Block;
 import java.util.ArrayList;
 
 import static me.github.lilyvxv.generators.Generators.dataManager;
-import static me.github.lilyvxv.generators.Generators.logger;
+import static me.github.lilyvxv.generators.Generators.LOGGER;
 
 public class VerifyGenerators {
 
@@ -28,7 +28,7 @@ public class VerifyGenerators {
         }
 
         if (removedCount > 0) {
-            logger.info("Removed " + removedCount + " de-synced generators");
+            LOGGER.info("Removed " + removedCount + " de-synced generators");
         }
     }
 }

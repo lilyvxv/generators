@@ -1,4 +1,12 @@
 max_default_generators: 25
+# Color schemes you can use via <(color name)>
+colors:
+  main: '#002855'
+  light: '#0466C8'
+  dull: '#979DAC'
+messages:
+  prefix: '<main>OrbitalGN</main> <dull>></dull> '
+
 generators:
   coal_generator:
     generator_name: <gray>Coal Generator</gray>

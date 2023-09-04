@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import static me.github.lilyvxv.generators.Generators.dataManager;
-import static me.github.lilyvxv.generators.Generators.plugin;
+import static me.github.lilyvxv.generators.Generators.INSTANCE;
 
 public class GeneratorManager {
 
@@ -21,7 +21,7 @@ public class GeneratorManager {
     }
 
     private static boolean isOnline(UUID playerUUID) {
-        Player player = plugin.getServer().getPlayer(playerUUID);
+        Player player = INSTANCE.getServer().getPlayer(playerUUID);
         return player != null && player.isOnline();
     }
 }

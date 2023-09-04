@@ -11,10 +11,6 @@ import static me.github.lilyvxv.generators.Generators.dataManager;
 import static org.bukkit.event.EventPriority.LOWEST;
 
 public class BlockBreakListener implements Listener {
-
-    public BlockBreakListener(Generators plugin) {
-    }
-
     @EventHandler(priority = LOWEST)
     public void onBlockBreak(BlockBreakEvent event) {
         Location location = event.getBlock().getLocation();

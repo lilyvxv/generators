@@ -1,12 +1,17 @@
 package me.github.lilyvxv.generators.utils.config;
 
+import me.github.lilyvxv.generators.Generators;
 import me.github.lilyvxv.generators.utils.generators.Generator;
 import me.github.lilyvxv.generators.utils.generators.GeneratorType;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ConfigManager {
 
@@ -14,15 +19,24 @@ public class ConfigManager {
     private final FileConfiguration config;
 
     public static int maxDefaultGenerators;
+    public static Map<String, TextColor> colorScheme = new HashMap<>();
 
     public ConfigManager(FileConfiguration config) {
         this.config = config;
+        load();
+    }
+
+    public void load() {
         loadConfig();
         loadGenerators();
     }
 
     private void loadConfig() {
         maxDefaultGenerators = config.getInt("max_default_generators");
+        for (String key : config.getConfigurationSection("colors").getKeys(false)) {
+            String value = config.getString("colors." + key);
+            colorScheme.put(key, TextColor.fromHexString(value));
+        }
     }
 
     private void loadGenerators() {
@@ -61,6 +75,10 @@ public class ConfigManager {
         return null;
     }
 
+    public Component getMessage(String key) {
+        return Generators.miniMessage
+                .deserialize(config.getString("messages." + key));
+    }
     public List<String> getAllGeneratorTypes() {
         List<String> generatorTypes = new ArrayList<>();
         for (GeneratorType generatorType : AVAILABLE_GENERATOR_TYPES) {
