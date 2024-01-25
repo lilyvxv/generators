@@ -17,7 +17,7 @@ public class GeneratorType {
     public final String dropName;
     public final Material dropItem;
     public final double dropValue;
-    public final int upgradeCost;
+    public final double upgradeCost;
 
     public GeneratorType(String generatorType, String generatorName, String generatorBlock, String generatorLore, String dropName, String dropItem, int dropValue, int upgradeCost) {
         this.generatorType = generatorType;

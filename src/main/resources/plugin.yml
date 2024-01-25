@@ -7,3 +7,4 @@ authors: [ lily ]
 description: Featureful and performant generator handler
 website: https://github.com/lilyvxv
 depend: [ Vault, Essentials ]
+api-version: 1.19

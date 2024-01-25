@@ -6,9 +6,9 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoreConverter {
+import static me.github.lilyvxv.generators.Generators.miniMessage;
 
-    private static final MiniMessage miniMessage = MiniMessage.miniMessage();
+public class LoreConverter {
 
     public static List<Component> deserialize(String input) {
         String[] stringArray = input.split("\n");

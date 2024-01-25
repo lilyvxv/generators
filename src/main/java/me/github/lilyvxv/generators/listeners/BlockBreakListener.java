@@ -1,6 +1,5 @@
 package me.github.lilyvxv.generators.listeners;
 
-import me.github.lilyvxv.generators.Generators;
 import me.github.lilyvxv.generators.utils.generators.Generator;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;

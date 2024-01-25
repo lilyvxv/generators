@@ -20,13 +20,13 @@ import java.util.Locale;
 import static me.github.lilyvxv.generators.Generators.configManager;
 import static me.github.lilyvxv.generators.Generators.economy;
 
+@Permission("generators.sell")
 @Command("sell")
 public class SellCommand {
 
     private static final NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
     @Default
-    @Permission("generators.sell")
     public static void sell(Player player) {
         Inventory inventory = player.getInventory();
         Double totalValue = 0.0;

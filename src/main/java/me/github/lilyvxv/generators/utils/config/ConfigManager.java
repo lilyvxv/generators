@@ -11,10 +11,9 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static me.github.lilyvxv.generators.Generators.LOGGER;
 
 public class ConfigManager {
 
@@ -64,7 +63,7 @@ public class ConfigManager {
                     String dropItem = generatorConfig.getString("drop_item");
                     int dropValue = generatorConfig.getInt("drop_value");
                     int upgradeCost = generatorConfig.getInt("upgrade_cost");
-
+                    LOGGER.info(generatorBlock);
                     // Create a generator instance from the data
                     GeneratorType generatorType = new GeneratorType(generatorKey, generatorName, generatorBlock, generatorLore, dropName, dropItem, dropValue, upgradeCost);
                     AVAILABLE_GENERATOR_TYPES.add(generatorType);
@@ -86,10 +85,11 @@ public class ConfigManager {
         return Generators.miniMessage
                 .deserialize(config.getString("messages." + key), tagResolvers);
     }
+
     public List<String> getAllGeneratorTypes() {
         List<String> generatorTypes = new ArrayList<>();
         for (GeneratorType generatorType : AVAILABLE_GENERATOR_TYPES) {
-            generatorTypes.add(generatorType.generatorName);
+            generatorTypes.add(generatorType.generatorType);
         }
         return generatorTypes;
     }

@@ -2,6 +2,7 @@ package me.github.lilyvxv.generators;
 
 import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPIBukkitConfig;
+import me.github.lilyvxv.generators.commands.GeneratorListCommand;
 import me.github.lilyvxv.generators.commands.GiveGeneratorCommand;
 import me.github.lilyvxv.generators.commands.ReloadCommand;
 import me.github.lilyvxv.generators.commands.SellCommand;
@@ -48,8 +49,8 @@ public final class Generators extends JavaPlugin {
             return;
         }
 
-        saveDefaultConfig();
-        reloadConfig();
+        // saveDefaultConfig();
+        // reloadConfig();
 
         FileConfiguration pluginConfig = getConfig();
         configManager = new ConfigManager(pluginConfig);
@@ -88,6 +89,7 @@ public final class Generators extends JavaPlugin {
         CommandAPI.registerCommand(GiveGeneratorCommand.class);
         CommandAPI.registerCommand(SellCommand.class);
         CommandAPI.registerCommand(ReloadCommand.class);
+        CommandAPI.registerCommand(GeneratorListCommand.class);
 
         getServer().getPluginManager().registerEvents(new WorldLoadListener(), this);
         getServer().getPluginManager().registerEvents(new BlockPlaceListener(), this);

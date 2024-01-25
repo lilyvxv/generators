@@ -1,29 +1,123 @@
 max_default_generators: 25
-# Color schemes you can use via <(color name)>
 colors:
   main: '#002855'
   light: '#0466C8'
   dull: '#979DAC'
 messages:
   prefix: '<main>OrbitalGN</main> <dull>></dull> '
-  sell.success: "<gray>Sold all of your generator drops for <color:#72fb00><value></color>!</gray>"
-  sell.no_items: '<gray>You do not have any items to sell.</gray>'
-  gens.no_slots: 'You do not have enough generator slots.'
-  gens.place: '<white>Successfully placed generator</white> <gray>(<green><placed></green>/<red><max></red>)</gray>'
+  sell:
+    success: <gray>Sold all of your generator drops for <color:#72fb00><value></color>!</gray>
+    no_items: <gray>You do not have any items to sell.</gray>
+  gens:
+    no_slots: You do not have enough generator slots.
+    place: <white>Successfully placed generator</white> <gray>(<green><placed></green>/<red><max></red>)</gray>
+  menu:
+    lore_1: ''
+    lore_2: ' <b><color:#9f85f2>❙</color></b> <gray>ᴅʀᴏᴘ ᴠᴀʟᴜᴇ:</gray> <yellow>⛃ <drop_value></yellow>'
+    lore_3: ' <b><color:#9f85f2>❙</color></b> <gray>ᴜᴘɢʀᴀᴅᴇ ᴄᴏsᴛ:<white> <yellow>⛃
+      <upgrade_cost></yellow>'
 generators:
-  coal_generator:
-    generator_name: <gray>Coal Generator</gray>
-    generator_block: coal_ore
-    generator_lore: <red>Generates coal</red>
-    drop_name: <blue>Coal</blue>
-    drop_item: coal
-    drop_value: 10
-    upgrade_cost: 100
-  iron_generator:
-    generator_name: <white>Iron Generator</white>
-    generator_block: iron_ore
-    generator_lore: <red>Generates iron</red>
-    drop_name: <green>Iron Ingot</green>
-    drop_item: iron_ingot
-    drop_value: 20
+  dandelion_generator:
+    generator_name: <yellow>ᴅᴀɴᴅᴇʟɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ</yellow> <gray>(1)</gray>
+    generator_block: yellow_stained_glass
+    generator_lore: test
+    drop_name: <yellow>ᴅᴀɴᴅᴇʟɪᴏɴ ᴅʀᴏᴘ</yellow>
+    drop_item: dandelion
+    drop_value: 200
+    upgrade_cost: 200
+  poppy_generator:
+    generator_name: <red>ᴘᴏᴘᴘʏ ɢᴇɴᴇʀᴀᴛᴏʀ</red> <gray>(2)</gray>
+    generator_block: red_stained_glass
+    generator_lore: test
+    drop_name: <yellow>ᴘᴏᴘᴘʏ ᴅʀᴏᴘ</yellow>
+    drop_item: poppy
+    drop_value: 200
+    upgrade_cost: 200
+  red_tulip_generator:
+    generator_name: <red>ʀᴇᴅ ᴛᴜʟɪᴘ ɢᴇɴᴇʀᴀᴛᴏʀ</red> <gray>(5)</gray>
+    generator_block: red_concrete
+    generator_lore: test
+    drop_name: <yellow>ʀᴇᴅ ᴛᴜʟɪᴘ ᴅʀᴏᴘ</yellow>
+    drop_item: red_tulip
+    drop_value: 200
+    upgrade_cost: 200
+  orchid_generator:
+    generator_name: <blue>ᴏʀᴄʜɪᴅ ɢᴇɴᴇʀᴀᴛᴏʀ</blue> <gray>(3)</gray>
+    generator_block: blue_stained_glass
+    generator_lore: test
+    drop_name: <yellow>ᴏʀᴄʜɪᴅ ᴅʀᴏᴘ</yellow>
+    drop_item: blue_orchid
+    drop_value: 200
+    upgrade_cost: 200
+  allium_generator:
+    generator_name: <light_purple>ᴀʟʟɪᴜᴍ ɢᴇɴᴇʀᴀᴛᴏʀ</light_purple> <gray>(4)</gray>
+    generator_block: magenta_stained_glass
+    generator_lore: test
+    drop_name: <yellow>ᴀʟʟɪᴜᴍ ᴅʀᴏᴘ</yellow>
+    drop_item: allium
+    drop_value: 200
+    upgrade_cost: 200
+  azure_generator:
+    generator_name: <white>ᴀᴢᴜʀᴇ ɢᴇɴᴇʀᴀᴛᴏʀ</white> <gray>(5)</gray>
+    generator_block: white_stained_glass
+    generator_lore: test
+    drop_name: <yellow>ᴀᴢᴜʀᴇ ᴅʀᴏᴘ</yellow>
+    drop_item: azure_bluet
+    drop_value: 200
+    upgrade_cost: 200
+  white_tulip_generator:
+    generator_name: <white>ᴡʜɪᴛᴇ ᴛᴜʟɪᴘ ɢᴇɴᴇʀᴀᴛᴏʀ</white> <gray>(5)</gray>
+    generator_block: white_concrete
+    generator_lore: test
+    drop_name: <yellow>ᴡʜɪᴛᴇ ᴛᴜʟɪᴘ ᴅʀᴏᴘ</yellow>
+    drop_item: white_tulip
+    drop_value: 200
+    upgrade_cost: 200
+  lily_generator:
+    generator_name: <white>ʟɪʟʏ ɢᴇɴᴇʀᴀᴛᴏʀ</white> <gray>(5)</gray>
+    generator_block: white_wool
+    generator_lore: test
+    drop_name: <yellow>ʟɪʟʏ ᴅʀᴏᴘ</yellow>
+    drop_item: lily_of_the_valley
+    drop_value: 200
+    upgrade_cost: 200
+  orange_tulip_generator:
+    generator_name: <gold>ᴏʀᴀɴɢᴇ ᴛᴜʟɪᴘ ɢᴇɴᴇʀᴀᴛᴏʀ</gold> <gray>(5)</gray>
+    generator_block: orange_stained_glass
+    generator_lore: test
+    drop_name: <yellow>ᴏʀᴀɴɢᴇ ᴛᴜʟɪᴘ ᴅʀᴏᴘ</yellow>
+    drop_item: orange_tulip
+    drop_value: 200
+    upgrade_cost: 200
+  pink_tulip_generator:
+    generator_name: <dark_purple>ᴘɪɴᴋ ᴛᴜʟɪᴘ ɢᴇɴᴇʀᴀᴛᴏʀ</dark_purple> <gray>(5)</gray>
+    generator_block: pink_stained_glass
+    generator_lore: test
+    drop_name: <yellow>ᴘɪɴᴋ ᴛᴜʟɪᴘ ᴅʀᴏᴘ</yellow>
+    drop_item: pink_tulip
+    drop_value: 200
+    upgrade_cost: 200
+  cornflower_generator:
+    generator_name: <blue>ᴄᴏʀɴғʟᴏᴡᴇʀ ɢᴇɴᴇʀᴀᴛᴏʀ</blue> <gray>(5)</gray>
+    generator_block: blue_concrete
+    generator_lore: test
+    drop_name: <yellow>ᴄᴏʀɴғʟᴏᴡᴇʀ ᴅʀᴏᴘ</yellow>
+    drop_item: cornflower
+    drop_value: 200
+    upgrade_cost: 200
+  torchflower_generator:
+    generator_name: <gold>ᴛᴏʀᴄʜғʟᴏᴡᴇʀ ɢᴇɴᴇʀᴀᴛᴏʀ</gold> <gray>(5)</gray>
+    generator_block: magma_block
+    generator_lore: test
+    drop_name: <yellow>ᴛᴏʀᴄʜғʟᴏᴡᴇʀ ᴅʀᴏᴘ</yellow>
+    drop_item: torchflower
+    drop_value: 200
+    upgrade_cost: 200
+  wither_rose_generator:
+    generator_name: <color:#212121>ᴡɪᴛʜᴇʀ ʀᴏsᴇ ɢᴇɴᴇʀᴀᴛᴏʀ<color:#212121> <gray>(5)</gray>
+    generator_block: black_stained_glass
+    generator_lore: test
+    drop_name: <yellow>ᴡɪᴛʜᴇʀ ʀᴏsᴇ ᴅʀᴏᴘ</yellow>
+    drop_item: wither_rose
+    drop_value: 200
     upgrade_cost: 200
